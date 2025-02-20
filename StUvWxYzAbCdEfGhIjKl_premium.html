@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Berish - M.Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      min-height: 100vh;
+    }
+    .premium-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .premium-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Rubik', sans-serif;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #FF4500;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #FF6347;
+    }
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 16px;
+      color: red;
+    }
+    /* Premium emaillar ro'yxati */
+    .premium-list-container {
+      max-width: 400px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .premium-list-container h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-family: 'Rubik', sans-serif;
+    }
+    .premium-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    .premium-item:last-child {
+      border-bottom: none;
+    }
+    .remove-button {
+      background-color: #b30000;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 14px;
+    }
+    .remove-button:hover {
+      background-color: #cc0000;
+    }
+    /* Qo'shimcha: Premium olish tugmasi (agar premium hali olinmagan bo'lsa) */
+    .get-premium-button {
+      display: inline-block;
+      background-color: #008000;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .get-premium-button:hover {
+      background-color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <!-- Premium berish formasi -->
+  <div class="premium-container">
+    <h1>Premium Berish</h1>
+    <form id="premiumForm">
+      <div class="form-group">
+        <label for="email">Emailingizni kiriting:</label>
+        <input type="email" id="email" name="email" required placeholder="your@example.com">
+      </div>
+      <button type="submit">Premium berish</button>
+    </form>
+    <div class="message" id="message"></div>
+    <!-- Agar foydalanuvchi hali premium bo'lmasa, u "Premium olish" tugmasi orqali premiumni faollashtirishi mumkin -->
+    <a href="#" id="getPremiumBtn" class="get-premium-button" style="display: none;">Premium olish</a>
+  </div>
+
+  <!-- Premium emaillar ro'yxati -->
+  <div class="premium-list-container" id="premiumListContainer">
+    <h2>Premium Emaillar</h2>
+    <div id="premiumList">
+      <!-- Premium emaillar shu yerda chiqadi -->
+    </div>
+  </div>
+  
+  <script>
+    // Premium berish formasi
+    document.getElementById('premiumForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const emailInput = document.getElementById('email').value.trim();
+      const messageDiv = document.getElementById('message');
+      
+      // Ro'yxatdan o'tgan foydalanuvchilar massivini olish
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      
+      // Email ro'yxatdan o'tganligini tekshirish
+      const user = users.find(u => u.email.toLowerCase() === emailInput.toLowerCase());
+      
+      if (user) {
+        // Premium huquqini berish
+        localStorage.setItem('hasPremium', 'true');
+        localStorage.setItem('userEmail', emailInput);
+        
+        // Premium emaillar massivini olish yoki yaratish
+        let premiumEmails = JSON.parse(localStorage.getItem('premiumEmails')) || [];
+        // Agar email ro'yxatda bo'lmasa qo'shish
+        if (!premiumEmails.includes(emailInput.toLowerCase())) {
+          premiumEmails.push(emailInput.toLowerCase());
+          localStorage.setItem('premiumEmails', JSON.stringify(premiumEmails));
+        }
+        alert("Premium muvaffaqiyatli berildi!");
+        updatePremiumList();
+        window.location.href = 'index.html';
+      } else {
+        messageDiv.textContent = "Kiritilgan email ro'yxatdan o'tmagan!";
+      }
+    });
+    
+    // Premium emaillar ro'yxatini yangilash
+    function updatePremiumList() {
+      const premiumListDiv = document.getElementById('premiumList');
+      const premiumEmails = JSON.parse(localStorage.getItem('premiumEmails')) || [];
+      premiumListDiv.innerHTML = "";
+      
+      if (premiumEmails.length === 0) {
+        premiumListDiv.innerHTML = "<p>Premium emaillar ro'yxati bo'sh.</p>";
+        return;
+      }
+      
+      premiumEmails.forEach((email, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('premium-item');
+        itemDiv.innerHTML = `
+          <span>${email}</span>
+          <button class="remove-button" onclick="removePremiumEmail(${index})">Premiumni olib qo'yish</button>
+        `;
+        premiumListDiv.appendChild(itemDiv);
+      });
+    }
+    
+    // Premium emailni ro'yxatdan olib tashlash
+    function removePremiumEmail(index) {
+      let premiumEmails = JSON.parse(localStorage.getItem('premiumEmails')) || [];
+      premiumEmails.splice(index, 1);
+      localStorage.setItem('premiumEmails', JSON.stringify(premiumEmails));
+      updatePremiumList();
+    }
+    
+    // Sahifa yuklanganda premium emaillar ro'yxatini yangilash va "Premium olish" tugmasini ko'rsatish (agar premium berilmagan bo'lsa)
+    window.onload = function() {
+      updatePremiumList();
+      // Agar foydalanuvchi tizimga kirmagan bo'lsa yoki premium statusi berilmagan bo'lsa, "Premium olish" tugmasini ko'rsatamiz
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      const hasPremium = localStorage.getItem('hasPremium');
+      if (isLoggedIn === 'true' && hasPremium !== 'true') {
+        document.getElementById('getPremiumBtn').style.display = 'block';
+      }
+    };
+    
+    // "Premium olish" tugmasi bosilganda: premium berish jarayoni takrorlanadi
+    document.getElementById('getPremiumBtn').addEventListener('click', function(event) {
+      event.preventDefault();
+      const emailInput = localStorage.getItem('userEmail');
+      if (emailInput) {
+        // Ro'yxatdan o'tgan foydalanuvchilar massivini olish
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(u => u.email.toLowerCase() === emailInput.toLowerCase());
+        if (user) {
+          localStorage.setItem('hasPremium', 'true');
+          alert("Premium muvaffaqiyatli faollashtirildi!");
+          window.location.href = 'index.html';
+        } else {
+          alert("Siz ro'yxatdan o'tmagansiz!");
+        }
+      } else {
+        alert("Iltimos, avval tizimga kiring va emailingizni kiriting.");
+      }
+    });
+  </script>
+</body>
+</html>
