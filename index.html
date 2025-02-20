@@ -15,7 +15,7 @@
     .main-nav ul { list-style: none; display: flex; gap: 20px; }
     .main-nav ul li a { text-decoration: none; font-size: 18px; color: #333; transition: color 0.3s ease; }
     .main-nav ul li a:hover { color: #ff7f50; }
-    .auth-info { display: flex; gap: 15px; font-size: 18px; margin-left: auto;}
+    .auth-info { display: flex; gap: 15px; font-size: 18px; margin-left: auto; }
     .auth-info a { font-family: 'Rubik', sans-serif; font-weight: bold; color: #333; text-decoration: none; padding: 10px 20px; border: 2px solid #333; border-radius: 5px; transition: color 0.3s ease, background-color 0.3s ease; }
     .auth-info a:hover { color: #fff; background-color: #ff7f50; }
     #logoutButton { padding: 10px 20px; font-size: 18px; background-color: #FF4500; color: white; border: none; border-radius: 5px; cursor: pointer; display: none; }
@@ -63,13 +63,15 @@
       padding: 10px 20px;
       background-color: #FF4500;
       color: white;
+	  justify-content: center;
+	  align-items: center;
       font-family: 'Rubik', sans-serif;
       font-weight: bold;
       text-decoration: none;
       border-radius: 50px;
       transition: background-color 0.3s ease;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 126px;
+      max-width: 300px; /* Oldingi 126px o'rniga 300px */
       width: 100%;
       text-align: center;
       margin-top: 50px;
@@ -109,7 +111,7 @@
       background-color: #fff;
       border: 2px solid #ccc;
       padding: 20px;
-      margin-top: 50px; /* Plugins ro'yxatidan pastda joylashishi uchun */
+      margin-top: 50px;
       width: 100%;
       position: relative;
       left: 0;
@@ -201,7 +203,7 @@
       <div class="logo">MONEYSTUDIO</div>
       <nav class="main-nav">
         <ul>
-          <li><a href="https://t.me/SHOXMONEY_CHANNEL">Telegram</a></li>
+          <li><a href="https://t.me/SHOXMONEY_CHANNEL">Telegram Kanal</a></li>
         </ul>
       </nav>
       <div class="auth-info" id="authLinks">
@@ -224,7 +226,7 @@
         mumkin bo'lgan barcha plugin hamda sborkalarni tekinga yuklab olasiz! Narxi: 50.000UZS
       </h2>
       <br />
-      <a href="https://t.me/ScoreWorldAdmin">Sotib olish</a>
+      <a href="https://t.me/ScoreWorldAdmin" class="purchase-button">Sotib Olish</a>
     </div>
   </section>
 
