@@ -15,7 +15,7 @@
     .main-nav ul { list-style: none; display: flex; gap: 20px; }
     .main-nav ul li a { text-decoration: none; font-size: 18px; color: #333; transition: color 0.3s ease; }
     .main-nav ul li a:hover { color: #ff7f50; }
-    .auth-info { display: flex; gap: 15px; font-size: 18px; text-align: left;}
+    .auth-info { display: flex; gap: 15px; font-size: 18px; margin-left: auto;}
     .auth-info a { font-family: 'Rubik', sans-serif; font-weight: bold; color: #333; text-decoration: none; padding: 10px 20px; border: 2px solid #333; border-radius: 5px; transition: color 0.3s ease, background-color 0.3s ease; }
     .auth-info a:hover { color: #fff; background-color: #ff7f50; }
     #logoutButton { padding: 10px 20px; font-size: 18px; background-color: #FF4500; color: white; border: none; border-radius: 5px; cursor: pointer; display: none; }
@@ -205,8 +205,8 @@
         </ul>
       </nav>
       <div class="auth-info" id="authLinks">
-        <a href="moneylog.html">Kirish</a>
-        <a href="moneyreg.html">Ro'yxatdan O'tish</a>
+        <a href="aBcDeFgHiJkLmNoPqRs_moneylog.html">Kirish</a>
+        <a href="tUvWxYzAbCdEfGhIjKl_moneyreg.html">Ro'yxatdan O'tish</a>
       </div>
       <div class="auth-info" style="margin: 20px; text-align: center;">
         <button id="logoutButton" onclick="logout()">Hisobdan Chiqish</button>
@@ -228,6 +228,28 @@
     </div>
   </section>
 
+  <!-- TUGMALAR -->
+  <div class="button-container">
+    <div class="minestax-container">
+      <a href="minestax.html" class="button minestax-button">
+        <img src="minestax.png" alt=""/>
+        MINEYSTAX
+      </a>
+    </div>
+    <div class="bytemc-container">
+      <a href="#" class="button bytemc-button">
+        <img src="bytemc.png" alt=""/>
+        BYTEMC
+      </a>
+    </div>
+    <div class="varemin-container">
+      <a href="#" class="button varemin-button">
+        <img src="varemine.png" alt=""/>
+        VAREMINE
+      </a>
+    </div>
+  </div>
+
   <!-- PLUGINS (ENG PASTDA) -->
   <div class="plugins-container">
     <div class="plugins-text">PLUGINS</div>
@@ -240,9 +262,9 @@
   <div id="adminPanel" class="admin-panel">
     <h3>ADMIN PANEL</h3>
     <p>Ushbu panel faqat adminlar uchun ko'rinadi.</p>
-    <a href="premium.html" class="admin-premium-button">PREMIUM BERISH</a>
-    <a href="plugin_upload.html" class="admin-plugin-button">PLUGIN YUKLASH</a>
-    <a href="plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000; margin-left: 10px;">PLUGIN O'CHIRISH</a>
+    <a href="StUvWxYzAbCdEfGhIjKl_premium.html" class="admin-premium-button">PREMIUM BERISH</a>
+    <a href="MnOpQrStUvWxYzAbCdE_plugin_upload.html" class="admin-plugin-button">PLUGIN YUKLASH</a>
+    <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000; margin-left: 10px;">PLUGIN O'CHIRISH</a>
   </div>
 
   <script>
@@ -254,16 +276,13 @@
       if (isLoggedIn === 'true') {
         document.getElementById('authLinks').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'block';
-        // Faqatgina joriy foydalanuvchining premium holati asosida premium tugma matnini o'zgartiramiz
         if (hasPremium === 'true' && userEmail) {
-          const purchaseBtn = document.querySelector('.purchase-button');
-          if (purchaseBtn) {
-            purchaseBtn.innerText = "Premium mavjud";
-            purchaseBtn.style.backgroundColor = "gray";
-            // Tugmani faolligini to'xtatmaslik uchun pointerEvents'ni o'zgartirmaymiz
-          }
+          const purchaseBtns = document.querySelectorAll('.purchase-button');
+          purchaseBtns.forEach(btn => {
+            btn.innerText = "Premium mavjud";
+            btn.style.backgroundColor = "gray";
+          });
         }
-        // Faqat admin emaili bilan kiritilgan foydalanuvchi uchun admin panel ko'rsatiladi
         if (userEmail && userEmail.toLowerCase() === "shoxmoneylord01@gmail.com") {
           document.getElementById('adminPanel').style.display = 'block';
         }
@@ -279,7 +298,7 @@
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('userEmail');
       alert("Hisobdan chiqdingiz!");
-      window.location.href = 'moneylog.html';
+      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
     }
 
     function loadPlugins() {
@@ -291,10 +310,9 @@
         const pluginDiv = document.createElement('div');
         pluginDiv.classList.add('plugin');
         pluginDiv.onclick = function() {
-          window.location.href = 'moneystudio-plugin.html?pluginId=' + index;
+          window.location.href = 'FgHiJkLmNoPqRsTuVwX_moneystudio-plugin.html?pluginId=' + index;
         };
         
-        // Rasm manbai: plugin.pluginImageData (DataURL) mavjud bo'lsa, undan foydalanamiz, aks holda imageFileName yoki placeholder.png
         const imageSrc = plugin.pluginImageData ? plugin.pluginImageData : (plugin.imageFileName ? plugin.imageFileName : 'placeholder.png');
         
         pluginDiv.innerHTML = `
@@ -316,8 +334,6 @@
 	document.addEventListener('contextmenu', function(event) {
   	  event.preventDefault();
 	});
-
   </script>
 </body>
 </html>
-
