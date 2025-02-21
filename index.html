@@ -200,11 +200,13 @@
     <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000;">PLUGIN O'CHIRISH</a>
   </div>
   
+  <!-- Firebase va boshqa JS kodlari -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
     import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
     
+    // Firebase konfiguratsiyasi – bu ma'lumotlarni Firebase konsolingizdan nusxa oling
     const firebaseConfig = {
       apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
       authDomain: "moneystudio-477ba.firebaseapp.com",
@@ -215,17 +217,19 @@
       measurementId: "G-1DWKGPP7GF"
     };
     
+    // Ilovani ishga tushurish
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
     
+    // Foydalanuvchi holatini kuzatish
     onAuthStateChanged(auth, (user) => {
-      if(user) {
+      if (user) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userEmail', user.email);
         document.getElementById('authLinks').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'block';
-        if(user.email.toLowerCase() === "shoxmoneylord01@gmail.com") {
+        if (user.email.toLowerCase() === "shoxmoneylord01@gmail.com") {
           document.getElementById('adminPanel').style.display = 'block';
         }
       } else {
@@ -237,6 +241,7 @@
       loadPlugins();
     });
     
+    // Global logout funksiyasi
     window.logout = function() {
       signOut(auth)
         .then(() => {
@@ -250,6 +255,7 @@
         });
     };
     
+    // Pluginlarni yuklash funksiyasi
     function loadPlugins() {
       const plugins = JSON.parse(localStorage.getItem('plugins')) || [];
       const pluginsList = document.getElementById('pluginsList');
@@ -277,6 +283,7 @@
       });
     }
     
+    // Kontekst menyusini bloklash
     document.addEventListener('contextmenu', function(event) {
       event.preventDefault();
     });
