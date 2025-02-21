@@ -7,34 +7,52 @@
   <!-- Shriftlar -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
   
-  <!-- Firebase App (the core Firebase SDK) -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-  <!-- Firebase Authentication -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-  
-  <script>
-    // Firebase konfiguratsiyasi – iltimos, o'zingizning loyihangiz ma'lumotlari bilan almashtiring
-    var firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID"
-      // boshqa konfiguratsiya parametrlarini qo'shing
+  <!-- Firebase Modular SDK (version 11.3.1) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+    
+    // Firebase konfiguratsiyasi – o'zingizning loyihangiz ma'lumotlari bilan almashtiring
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
+      authDomain: "moneystudio-477ba.firebaseapp.com",
+      projectId: "moneystudio-477ba",
+      storageBucket: "moneystudio-477ba.firebasestorage.app",
+      messagingSenderId: "430106553611",
+      appId: "1:430106553611:web:5208a92ca112b2c661460e",
+      measurementId: "G-1DWKGPP7GF"
     };
-    firebase.initializeApp(firebaseConfig);
-
-    // Firebase Auth o'zgarishini kuzatish va localStorage'ni yangilash
-    firebase.auth().onAuthStateChanged(function(user) {
+    
+    // Firebase ilovasini ishga tushurish
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    
+    // Foydalanuvchi holatini kuzatish va localStorage ni yangilash
+    onAuthStateChanged(auth, (user) => {
       if(user) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userEmail', user.email);
-        // Agar premium status bo'lsa, uni ham shu yerda belgilashingiz mumkin
-        // localStorage.setItem('hasPremium', 'true');
       } else {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('userEmail');
-        // localStorage.removeItem('hasPremium');
       }
     });
+    
+    // Global logout funksiyasi
+    window.logout = function() {
+      signOut(auth)
+        .then(() => {
+          localStorage.removeItem('isLoggedIn');
+          localStorage.removeItem('userEmail');
+          alert("Hisobdan chiqdingiz!");
+          window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+        })
+        .catch((error) => {
+          console.error("Sign out error:", error);
+        });
+    };
   </script>
   
   <style>
@@ -102,7 +120,7 @@
       border-radius: 50px;
       transition: background-color 0.3s ease;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 300px; /* Oldingi 126px o'rniga 300px */
+      max-width: 300px;
       width: 100%;
       text-align: center;
       margin-top: 50px;
@@ -300,18 +318,6 @@
       loadPlugins();
     };
 
-    function logout() {
-      // Firebase sign out qilamiz
-      firebase.auth().signOut().then(() => {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userEmail');
-        alert("Hisobdan chiqdingiz!");
-        window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
-      }).catch((error) => {
-        console.error("Sign out error:", error);
-      });
-    }
-
     function loadPlugins() {
       const plugins = JSON.parse(localStorage.getItem('plugins')) || [];
       const pluginsList = document.getElementById('pluginsList');
@@ -341,10 +347,10 @@
         pluginsList.appendChild(pluginDiv);
       });
     }
-	
-	  document.addEventListener('contextmenu', function(event) {
-  	  event.preventDefault();
-	  });
+    
+    document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+    });
   </script>
 </body>
 </html>
