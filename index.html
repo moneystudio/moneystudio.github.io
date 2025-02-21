@@ -10,27 +10,23 @@
     /* Umumiy uslublar */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background-color: #f4f6f8; }
-    .container { width: 90%; max-width: 1400px; margin: 0 auto; padding: 30px 0; display: flex; align-items: center; justify-content: space-between; }
+    header { padding: 20px; background: #fff; border-bottom: 1px solid #ccc; }
     .logo { font-family: 'Rubik', sans-serif; font-size: 32px; font-weight: bold; color: #000; text-decoration: none; }
-    .main-nav ul { list-style: none; display: flex; gap: 20px; }
-    .main-nav ul li a { text-decoration: none; font-size: 18px; color: #333; transition: color 0.3s ease; }
-    .main-nav ul li a:hover { color: #ff7f50; }
-    .auth-info { display: flex; gap: 15px; font-size: 18px; margin-left: auto; }
-    .auth-info a { font-family: 'Rubik', sans-serif; font-weight: bold; color: #333; text-decoration: none; padding: 10px 20px; border: 2px solid #333; border-radius: 5px; transition: color 0.3s ease, background-color 0.3s ease; }
-    .auth-info a:hover { color: #fff; background-color: #ff7f50; }
-    #logoutButton { padding: 10px 20px; font-size: 18px; background-color: #FF4500; color: white; border: none; border-radius: 5px; cursor: pointer; display: none; }
+    .auth-info { float: right; }
+    .auth-info a, #logoutButton { margin-left: 10px; font-size: 16px; text-decoration: none; }
+    .clear { clear: both; }
     
-    /* PREMIUM bo‘limi */
+    /* PREMIUM bo'limi */
     .premium-section {
       display: flex;
       align-items: center;
-      margin: 0 50px 20px 50px;
       background: linear-gradient(45deg, #FFD700, #FF4500);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       min-height: 300px;
       position: relative;
+      margin: 20px 50px;
     }
     .premium-image {
       width: 250px;
@@ -52,40 +48,30 @@
       color: #fff;
       margin-bottom: 10px;
     }
-    .premium-content p {
+    .premium-content h2 {
       font-size: 16px;
       color: #fff;
-      margin-bottom: 0;
     }
     .purchase-button {
-      display: flex;
-      align-items: center;
+      display: block;
+      margin-top: 20px;
       padding: 10px 20px;
       background-color: #FF4500;
       color: white;
-	  justify-content: center;
-	  align-items: center;
-      font-family: 'Rubik', sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 300px; /* Oldingi 126px o'rniga 300px */
-      width: 100%;
       text-align: center;
-      margin-top: 50px;
-      margin: 0 auto;
-      padding: 15px 0;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
     .purchase-button:hover { background-color: #FF6347; }
     
-    /* Tugmalar (MINESTAX, BYTEMC, VAREMINE) */
+    /* BUTTON CONTAINER */
     .button-container {
       display: flex;
-      margin: 0 50px;
-      padding-top: 20px;
+      justify-content: center;
       gap: 10px;
+      margin: 20px 50px;
     }
     .button {
       display: flex;
@@ -99,57 +85,20 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 250px;
-      width: 100%;
-      text-align: left;
     }
     .button:hover { background-color: #FF6347; }
-    .button img { width: 40px; height: 40px; margin-right: 10px; border-radius: 10px; background-color: #f0f0f0; }
+    .button img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+    }
     
-    /* Admin panel */
-    .admin-panel {
-      background-color: #fff;
-      border: 2px solid #ccc;
-      padding: 20px;
-      margin-top: 50px;
-      width: 100%;
-      position: relative;
-      left: 0;
-      display: none;
-    }
-    .admin-panel h3 { margin-bottom: 10px; }
-    .admin-premium-button {
-      display: inline-block;
-      background-color: #FF4500;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 10px;
-    }
-    .admin-premium-button:hover { background-color: #FF6347; }
-    .admin-plugin-button {
-      display: inline-block;
-      background-color: #000;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 10px;
-      margin-left: 10px;
-    }
-    .admin-plugin-button:hover { background-color: #333; }
-    
-    /* PLUGINS bo‘limi (eng pastda) */
+    /* PLUGINS bo'limi */
     .plugins-container {
-      margin-top: 20px;
+      margin: 20px 50px;
       text-align: left;
-      margin-left: 50px;
-      margin-bottom: 50px;
     }
     .plugins-text {
       font-family: 'Rubik', sans-serif;
@@ -161,31 +110,31 @@
     .plugin {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      border: 1px solid #ddd;
       padding: 10px;
       border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      background: #fff;
     }
     .plugin:hover { background-color: #f0f0f0; }
     .plugin-image {
       width: 100px;
       height: 100px;
-      background-color: #f0f0f0;
       border-radius: 10px;
-      margin-right: 15px;
       object-fit: cover;
+      margin-right: 15px;
     }
     .plugin-content {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
     }
     .plugin-name {
       font-family: 'Rubik', sans-serif;
       font-size: 18px;
       font-weight: bold;
       color: #333;
+      overflow-wrap: break-word;
     }
     .plugin-info {
       font-size: 14px;
@@ -194,122 +143,164 @@
     }
     .gray-text { color: gray; }
     .green-text { color: green; }
+    /* Qo'shimcha maydonlar: download tugmasi va premium holati */
+    .plugin-extra {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .download-button {
+      padding: 6px 12px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .download-button:hover { background-color: #218838; }
+    .premium-status {
+      font-size: 14px;
+      font-weight: bold;
+	  margin-right: auto;
+	  color: #FFD700; /* Yoki oddiy "yellow" */
+	  display: inline-block; /* Agar kerak bo'lsa */
+    }
+
+    /* EMAIL RO'YXATI */
+    .email-list {
+      margin: 40px 50px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .email-list h2 {
+      font-family: 'Rubik', sans-serif;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .email-list ul { list-style: none; }
+    .email-list li { margin-bottom: 8px; font-size: 16px; }
   </style>
 </head>
 <body>
   <!-- HEADER -->
-  <header class="main-header">
+  <header>
     <div class="container">
-      <div class="logo">MONEYSTUDIO</div>
+      <a class="logo" href="#">MONEYSTUDIO</a>
       <div class="auth-info" id="authLinks">
         <a href="aBcDeFgHiJkLmNoPqRs_moneylog.html">Kirish</a>
         <a href="tUvWxYzAbCdEfGhIjKl_moneyreg.html">Ro'yxatdan O'tish</a>
-      </div>
-      <div class="auth-info" style="margin: 20px; text-align: center;">
         <button id="logoutButton" onclick="logout()">Hisobdan Chiqish</button>
-        <a href="tg://resolve?domain=SHOXMONEY_CHANNEL">Telegram Kanal</a>
       </div>
+      <div class="clear"></div>
     </div>
   </header>
 
-  <!-- PREMIUM BO'LIMI -->
+  <!-- PREMIUM bo'limi -->
   <section class="premium-section">
     <img src="premium.png" alt="Premium Image" class="premium-image">
     <div class="premium-content">
       <h1>PREMIUM</h1>
-      <h2>
-        PREMIUM - bu donatega oxshagan narsa bolib, siz agar uni sotib olsangiz premium donatiga
-        mumkin bo'lgan barcha plugin hamda sborkalarni tekinga yuklab olasiz! Narxi: 50.000UZS
-      </h2>
-      <br />
+      <h2>PREMIUM - bu donatega oxshagan narsa. Agar sotib olsangiz, premium pluginlar va sborkalarni tekinga yuklab olasiz! Narxi: 25.000UZS</h2>
+      <br>
       <a href="tg://resolve?domain=ScoreWorldAdmin" class="purchase-button">Sotib Olish</a>
     </div>
   </section>
 
-  <!-- PLUGINS (ENG PASTDA) -->
+  <!-- BUTTON CONTAINER -->
+  <div class="button-container">
+    <a href="minestax.html" class="button">
+      <img src="minestax.png" alt="">
+      MINESTAX
+    </a>
+    <a href="#" class="button">
+      <img src="bytemc.png" alt="">
+      BYTEMC
+    </a>
+    <a href="#" class="button">
+      <img src="varemine.png" alt="">
+      VAREMINE
+    </a>
+  </div>
+
+  <!-- PLUGINS BO'LIMI -->
   <div class="plugins-container">
     <div class="plugins-text">PLUGINS</div>
-    <div id="pluginsList">
-      <!-- Pluginlar shu yerga dinamik tarzda qo'shiladi -->
+    <!-- Plugin kartalari: onclick orqali plugin.html ga yo'naltirish -->
+    <div class="plugin" onclick="window.location.href='mstudio-plugin-advancedenchantments.html'">
+      <img src="advancedenchantments.png" alt="Plugin Image" class="plugin-image">
+      <div class="plugin-content">
+        <div class="plugin-name">
+          <span>AdvancedEnchantments 1.17-1.20</span>
+          <span class="green-text"> · PREMIUM</span>
+        </div>
+        <div class="plugin-info">
+          <span class="gray-text">Serveringizga yangi sehrlar qo‘shish imkoniyati...</span>
+        </div>
+        <div class="plugin-extra">
+          <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
+        </div>
+      </div>
+    </div>
+    <div class="plugin" onclick="window.location.href='mstudio-plugin-vulcan.html'">
+      <img src="vulcan.png" alt="Plugin Image" class="plugin-image">
+      <div class="plugin-content">
+        <div class="plugin-name">
+          <span>Vulcan 1.7-1.21</span>
+          <span class="green-text"> · PREMIUM</span>
+        </div>
+        <div class="plugin-info">
+          <span class="gray-text">Serveringizni chiterlar va griferlardan himoya qiladi.</span>
+        </div>
+        <div class="plugin-extra">
+          <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
+        </div>
+      </div>
+    </div>
+    <div class="plugin" onclick="window.location.href='mstudio-plugin-chatex.html'">
+        <img src="chatex.png" alt="Plugin Image" class="plugin-image">
+        <div class="plugin-content">
+          <div class="plugin-name">ChatEx 1.13-1.20</div>
+          <div class="plugin-info">
+            <span class="gray-text">Serveringiz chatini o'zgartirishga imkon beradi.</span>
+          </div>
+          <div class="plugin-extra">
+            <div class="premium-status">&nbsp;&nbsp;Premium: No</div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 
-  <!-- ADMIN PANEL (Faqat admin email bo'lsa) -->
-  <div id="adminPanel" class="admin-panel">
-    <h3>ADMIN PANEL</h3>
-    <p>Ushbu panel faqat adminlar uchun ko'rinadi.</p>
-    <a href="StUvWxYzAbCdEfGhIjKl_premium.html" class="admin-premium-button">PREMIUM BERISH</a>
-    <a href="MnOpQrStUvWxYzAbCdE_plugin_upload.html" class="admin-plugin-button">PLUGIN YUKLASH</a>
-    <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000; margin-left: 10px;">PLUGIN O'CHIRISH</a>
-  </div>
-
   <script>
-    window.onload = function() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      const userEmail = localStorage.getItem('userEmail');
-      const hasPremium = localStorage.getItem('hasPremium');
-
-      if (isLoggedIn === 'true') {
-        document.getElementById('authLinks').style.display = 'none';
-        document.getElementById('logoutButton').style.display = 'block';
-        if (hasPremium === 'true' && userEmail) {
-          const purchaseBtns = document.querySelectorAll('.purchase-button');
-          purchaseBtns.forEach(btn => {
-            btn.innerText = "Premium mavjud";
-            btn.style.backgroundColor = "gray";
-          });
-        }
-        if (userEmail && userEmail.toLowerCase() === "shoxmoneylord01@gmail.com") {
-          document.getElementById('adminPanel').style.display = 'block';
-        }
-      } else {
-        document.getElementById('authLinks').style.display = 'flex';
-        document.getElementById('logoutButton').style.display = 'none';
-      }
-      loadPlugins();
-    };
-
+    // Logout funksiyasi
     function logout() {
-      // "hasPremium" holati saqlanib qoladi
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('userEmail');
       alert("Hisobdan chiqdingiz!");
       window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
     }
 
-    function loadPlugins() {
-      const plugins = JSON.parse(localStorage.getItem('plugins')) || [];
-      const pluginsList = document.getElementById('pluginsList');
-      pluginsList.innerHTML = "";
+    // Sahifa yuklanganda tizimga kirganligini tekshirish
+    window.onload = function() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn) {
+        document.getElementById('authLinks').style.display = 'none';
+        document.getElementById('logoutButton').style.display = 'block';
+      } else {
+        document.getElementById('authLinks').style.display = 'flex';
+        document.getElementById('logoutButton').style.display = 'none';
+      }
+    };
 
-      plugins.forEach((plugin, index) => {
-        const pluginDiv = document.createElement('div');
-        pluginDiv.classList.add('plugin');
-        pluginDiv.onclick = function() {
-          window.location.href = 'FgHiJkLmNoPqRsTuVwX_moneystudio-plugin.html?pluginId=' + index;
-        };
-        
-        const imageSrc = plugin.pluginImageData ? plugin.pluginImageData : (plugin.imageFileName ? plugin.imageFileName : 'placeholder.png');
-        
-        pluginDiv.innerHTML = `
-          <img src="${imageSrc}" alt="Plugin Image" class="plugin-image">
-          <div class="plugin-content">
-            <div class="plugin-name">
-              ${plugin.pluginName}
-              ${plugin.isPremium === 'yes' ? '<span style="color: green;"> · PREMIUM</span>' : ''}
-            </div>
-            <div class="plugin-info">
-              Toifa: ${plugin.pluginCategory} · Fayl: ${plugin.fileName}
-            </div>
-          </div>
-        `;
-        pluginsList.appendChild(pluginDiv);
-      });
-    }
-	
-	document.addEventListener('contextmenu', function(event) {
-  	  event.preventDefault();
-	});
+    // Context menu ni bloklash
+    document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+    });
   </script>
 </body>
 </html>
