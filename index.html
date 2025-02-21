@@ -4,57 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>M.Studio</title>
-  <!-- Shriftlar -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
-  
-  <!-- Firebase Modular SDK (version 11.3.1) -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
-    
-    // Firebase konfiguratsiyasi – o'zingizning loyihangiz ma'lumotlari bilan almashtiring
-    const firebaseConfig = {
-      apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
-      authDomain: "moneystudio-477ba.firebaseapp.com",
-      projectId: "moneystudio-477ba",
-      storageBucket: "moneystudio-477ba.firebasestorage.app",
-      messagingSenderId: "430106553611",
-      appId: "1:430106553611:web:5208a92ca112b2c661460e",
-      measurementId: "G-1DWKGPP7GF"
-    };
-    
-    // Firebase ilovasini ishga tushurish
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth(app);
-    
-    // Foydalanuvchi holatini kuzatish va localStorage ni yangilash
-    onAuthStateChanged(auth, (user) => {
-      if(user) {
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', user.email);
-      } else {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userEmail');
-      }
-    });
-    
-    // Global logout funksiyasi
-    window.logout = function() {
-      signOut(auth)
-        .then(() => {
-          localStorage.removeItem('isLoggedIn');
-          localStorage.removeItem('userEmail');
-          alert("Hisobdan chiqdingiz!");
-          window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
-        })
-        .catch((error) => {
-          console.error("Sign out error:", error);
-        });
-    };
-  </script>
-  
   <style>
     /* Umumiy uslublar */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -113,7 +63,6 @@
       background-color: #FF4500;
       color: white;
       justify-content: center;
-      align-items: center;
       font-family: 'Rubik', sans-serif;
       font-weight: bold;
       text-decoration: none;
@@ -123,77 +72,12 @@
       max-width: 300px;
       width: 100%;
       text-align: center;
-      margin-top: 50px;
-      margin: 0 auto;
+      margin: 50px auto 0;
       padding: 15px 0;
     }
     .purchase-button:hover { background-color: #FF6347; }
     
-    /* Tugmalar (MINESTAX, BYTEMC, VAREMINE) */
-    .button-container {
-      display: flex;
-      margin: 0 50px;
-      padding-top: 20px;
-      gap: 10px;
-    }
-    .button {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #FF4500;
-      color: white;
-      font-family: 'Rubik', sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 250px;
-      width: 100%;
-      text-align: left;
-    }
-    .button:hover { background-color: #FF6347; }
-    .button img { width: 40px; height: 40px; margin-right: 10px; border-radius: 10px; background-color: #f0f0f0; }
-    
-    /* Admin panel */
-    .admin-panel {
-      background-color: #fff;
-      border: 2px solid #ccc;
-      padding: 20px;
-      margin-top: 50px;
-      width: 100%;
-      position: relative;
-      left: 0;
-      display: none;
-    }
-    .admin-panel h3 { margin-bottom: 10px; }
-    .admin-premium-button {
-      display: inline-block;
-      background-color: #FF4500;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 10px;
-    }
-    .admin-premium-button:hover { background-color: #FF6347; }
-    .admin-plugin-button {
-      display: inline-block;
-      background-color: #000;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 10px;
-      margin-left: 10px;
-    }
-    .admin-plugin-button:hover { background-color: #333; }
-    
-    /* PLUGINS bo‘limi (eng pastda) */
+    /* PLUGINS bo‘limi */
     .plugins-container {
       margin-top: 20px;
       text-align: left;
@@ -243,6 +127,30 @@
     }
     .gray-text { color: gray; }
     .green-text { color: green; }
+    
+    /* ADMIN PANEL */
+    .admin-panel {
+      background-color: #fff;
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin-top: 50px;
+      width: 100%;
+      display: none;
+    }
+    .admin-panel h3 { margin-bottom: 10px; }
+    .admin-premium-button, .admin-plugin-button {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .admin-premium-button { background-color: #FF4500; color: white; }
+    .admin-premium-button:hover { background-color: #FF6347; }
+    .admin-plugin-button { background-color: #000; color: #fff; margin-left: 10px; }
+    .admin-plugin-button:hover { background-color: #333; }
   </style>
 </head>
 <body>
@@ -260,21 +168,21 @@
       </div>
     </div>
   </header>
-
+  
   <!-- PREMIUM BO'LIMI -->
   <section class="premium-section">
     <img src="premium.png" alt="Premium Image" class="premium-image">
     <div class="premium-content">
       <h1>PREMIUM</h1>
       <h2>
-        PREMIUM - bu donatega oxshagan narsa bolib, siz agar uni sotib olsangiz premium donatiga
+        PREMIUM - bu donatega oxshagan narsa bo'lib, siz agar uni sotib olsangiz premium donatiga
         mumkin bo'lgan barcha plugin hamda sborkalarni tekinga yuklab olasiz! Narxi: 50.000UZS
       </h2>
       <br />
       <a href="tg://resolve?domain=ScoreWorldAdmin" class="purchase-button">Sotib Olish</a>
     </div>
   </section>
-
+  
   <!-- PLUGINS (ENG PASTDA) -->
   <div class="plugins-container">
     <div class="plugins-text">PLUGINS</div>
@@ -282,56 +190,77 @@
       <!-- Pluginlar shu yerga dinamik tarzda qo'shiladi -->
     </div>
   </div>
-
+  
   <!-- ADMIN PANEL (Faqat admin email bo'lsa) -->
   <div id="adminPanel" class="admin-panel">
     <h3>ADMIN PANEL</h3>
     <p>Ushbu panel faqat adminlar uchun ko'rinadi.</p>
     <a href="StUvWxYzAbCdEfGhIjKl_premium.html" class="admin-premium-button">PREMIUM BERISH</a>
     <a href="MnOpQrStUvWxYzAbCdE_plugin_upload.html" class="admin-plugin-button">PLUGIN YUKLASH</a>
-    <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000; margin-left: 10px;">PLUGIN O'CHIRISH</a>
+    <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000;">PLUGIN O'CHIRISH</a>
   </div>
-
-  <script>
-    window.onload = function() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      const userEmail = localStorage.getItem('userEmail');
-      const hasPremium = localStorage.getItem('hasPremium');
-
-      if (isLoggedIn === 'true') {
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
+      authDomain: "moneystudio-477ba.firebaseapp.com",
+      projectId: "moneystudio-477ba",
+      storageBucket: "moneystudio-477ba.firebasestorage.app",
+      messagingSenderId: "430106553611",
+      appId: "1:430106553611:web:5208a92ca112b2c661460e",
+      measurementId: "G-1DWKGPP7GF"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    
+    onAuthStateChanged(auth, (user) => {
+      if(user) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', user.email);
         document.getElementById('authLinks').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'block';
-        if (hasPremium === 'true' && userEmail) {
-          const purchaseBtns = document.querySelectorAll('.purchase-button');
-          purchaseBtns.forEach(btn => {
-            btn.innerText = "Premium mavjud";
-            btn.style.backgroundColor = "gray";
-          });
-        }
-        if (userEmail && userEmail.toLowerCase() === "shoxmoneylord01@gmail.com") {
+        if(user.email.toLowerCase() === "shoxmoneylord01@gmail.com") {
           document.getElementById('adminPanel').style.display = 'block';
         }
       } else {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
         document.getElementById('authLinks').style.display = 'flex';
         document.getElementById('logoutButton').style.display = 'none';
       }
       loadPlugins();
+    });
+    
+    window.logout = function() {
+      signOut(auth)
+        .then(() => {
+          localStorage.removeItem('isLoggedIn');
+          localStorage.removeItem('userEmail');
+          alert("Hisobdan chiqdingiz!");
+          window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+        })
+        .catch((error) => {
+          console.error("Sign out error:", error);
+        });
     };
-
+    
     function loadPlugins() {
       const plugins = JSON.parse(localStorage.getItem('plugins')) || [];
       const pluginsList = document.getElementById('pluginsList');
       pluginsList.innerHTML = "";
-
       plugins.forEach((plugin, index) => {
         const pluginDiv = document.createElement('div');
         pluginDiv.classList.add('plugin');
         pluginDiv.onclick = function() {
           window.location.href = 'FgHiJkLmNoPqRsTuVwX_moneystudio-plugin.html?pluginId=' + index;
         };
-        
         const imageSrc = plugin.pluginImageData ? plugin.pluginImageData : (plugin.imageFileName ? plugin.imageFileName : 'placeholder.png');
-        
         pluginDiv.innerHTML = `
           <img src="${imageSrc}" alt="Plugin Image" class="plugin-image">
           <div class="plugin-content">
