@@ -82,6 +82,10 @@
       text-decoration: none;
     }
   </style>
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
 </head>
 <body>
   <div class="container">
@@ -108,10 +112,21 @@
   </div>
 
   <script>
-    // Foydalanuvchi allaqachon tizimga kirganligini tekshirish
-    if (localStorage.getItem('isLoggedIn')) {
-      window.location.href = 'index.html'; // Agar foydalanuvchi kirgan bo'lsa, asosiy sahifa index.html bo'ladi
-    }
+    // Firebase konfiguratsiyasi – iltimos, o'zingizning loyiha ma'lumotlaringiz bilan almashtiring
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID"
+      // boshqa konfiguratsiya parametrlarini qo'shing
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Agar foydalanuvchi allaqachon tizimga kirgan bo'lsa, index.html ga yo'naltirish
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = 'index.html';
+      }
+    });
 
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -126,25 +141,15 @@
         return;
       }
 
-      // Mavjud foydalanuvchilarni olish
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-
-      // Email allaqachon mavjudligini tekshirish
-      if (users.some(user => user.email.toLowerCase() === email.toLowerCase())) {
-        alert('Bu email allaqachon ro\'yxatdan o\'tgan.');
-        return;
-      }
-
-      // Yangi foydalanuvchini qo‘shish
-      users.push({ email, password });
-      localStorage.setItem('users', JSON.stringify(users));
-
-      // Kirish holatini saqlash
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userEmail', email);
-
-      alert('Ro‘yxatdan o‘tish muvaffaqiyatli! Endi tizimga kirasiz.');
-      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html'; // Bu yerda login sahifasiga yo'naltirishni saqlashingiz mumkin
+      // Yangi foydalanuvchini yaratish
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert('Ro‘yxatdan o‘tish muvaffaqiyatli! Endi tizimga kirasiz.');
+          window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     });
   </script>
 </body>
