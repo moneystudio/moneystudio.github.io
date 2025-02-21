@@ -364,6 +364,13 @@
         }
       });
     });
+  
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    alert("Hisobdan chiqdingiz!");
+    window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+  }
   </script>
 </body>
 </html>
