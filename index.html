@@ -302,5 +302,28 @@
       event.preventDefault();
     });
   </script>
+  <script>
+    // Sahifa yuklanganda foydalanuvchi tizimga kirgan yoki kirmaganligini aniqlash:
+    window.onload = function() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      // Agar foydalanuvchi tizimga kirgan bo'lsa:
+      if (isLoggedIn === 'true') {
+        document.getElementById('authLinks').style.display = 'none';
+        document.getElementById('logoutButton').style.display = 'block';
+      } else {
+        document.getElementById('authLinks').style.display = 'flex';
+        document.getElementById('logoutButton').style.display = 'none';
+      }
+      // Boshqa kodlaringiz (masalan, pluginlarni yuklash) ham shu yerda chaqirilishi mumkin.
+    };
+
+    // Logout funksiyasi
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userEmail');
+      alert("Hisobdan chiqdingiz!");
+      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+    }
+  </script>
 </body>
 </html>
