@@ -117,7 +117,7 @@
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
       projectId: "YOUR_PROJECT_ID"
-      // boshqa konfiguratsiya parametrlarini qo'shing
+      // Agar boshqa parametrlar kerak bo'lsa, ularni ham qo'shing
     };
     firebase.initializeApp(firebaseConfig);
 
@@ -141,14 +141,17 @@
         return;
       }
 
-      // Yangi foydalanuvchini yaratish
+      // Online ro'yxatdan o'tish: Firebase orqali yangi foydalanuvchini yaratish
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
+          // Ro'yxatdan o'tish muvaffaqiyatli bo'ldi
           alert('Ro‘yxatdan o‘tish muvaffaqiyatli! Endi tizimga kirasiz.');
           window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
         })
         .catch((error) => {
-          alert(error.message);
+          // Xatolik haqida ma'lumotni alert orqali ko'rsatamiz
+          console.error("Ro'yxatdan o'tish xatosi:", error);
+          alert("Xatolik: " + error.message);
         });
     });
   </script>
