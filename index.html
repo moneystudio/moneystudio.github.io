@@ -6,6 +6,37 @@
   <title>M.Studio</title>
   <!-- Shriftlar -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  
+  <script>
+    // Firebase konfiguratsiyasi – iltimos, o'zingizning loyihangiz ma'lumotlari bilan almashtiring
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID"
+      // boshqa konfiguratsiya parametrlarini qo'shing
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Firebase Auth o'zgarishini kuzatish va localStorage'ni yangilash
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', user.email);
+        // Agar premium status bo'lsa, uni ham shu yerda belgilashingiz mumkin
+        // localStorage.setItem('hasPremium', 'true');
+      } else {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        // localStorage.removeItem('hasPremium');
+      }
+    });
+  </script>
+  
   <style>
     /* Umumiy uslublar */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,8 +94,8 @@
       padding: 10px 20px;
       background-color: #FF4500;
       color: white;
-	  justify-content: center;
-	  align-items: center;
+      justify-content: center;
+      align-items: center;
       font-family: 'Rubik', sans-serif;
       font-weight: bold;
       text-decoration: none;
@@ -271,11 +302,15 @@
     };
 
     function logout() {
-      // "hasPremium" holati saqlanib qoladi
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('userEmail');
-      alert("Hisobdan chiqdingiz!");
-      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+      // Firebase sign out qilamiz
+      firebase.auth().signOut().then(() => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        alert("Hisobdan chiqdingiz!");
+        window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+      }).catch((error) => {
+        console.error("Sign out error:", error);
+      });
     }
 
     function loadPlugins() {
@@ -308,9 +343,9 @@
       });
     }
 	
-	document.addEventListener('contextmenu', function(event) {
+	  document.addEventListener('contextmenu', function(event) {
   	  event.preventDefault();
-	});
+	  });
   </script>
 </body>
 </html>
