@@ -82,6 +82,10 @@
       text-decoration: none;
     }
   </style>
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
 </head>
 <body>
   <div class="container">
@@ -104,10 +108,21 @@
   </div>
 
   <script>
-    // Agar foydalanuvchi allaqachon tizimga kirgan bo'lsa, asosiy sahifaga o'tkazish
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      window.location.href = 'index.html';
-    }
+    // Firebase konfiguratsiyasi – iltimos, o'zingizning loyiha ma'lumotlaringiz bilan almashtiring
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID"
+      // boshqa konfiguratsiya parametrlarini qo'shing
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Agar foydalanuvchi allaqachon tizimga kirgan bo'lsa, index.html ga yo'naltirish
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = 'index.html';
+      }
+    });
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -115,26 +130,14 @@
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      // LocalStorage'dan foydalanuvchilar ro'yxatini olish
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-
-      // Email va parol bo'yicha foydalanuvchini topish
-      let user = users.find(user => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
-
-      if (user) {
-        alert('Kirish muvaffaqiyatli amalga oshirildi.');
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', email);
-        // Agar foydalanuvchining premium belgisi bo'lsa, "hasPremium" kalitini saqlaymiz
-        if (user.hasPremium) {
-          localStorage.setItem('hasPremium', 'true');
-        } else {
-          localStorage.removeItem('hasPremium');
-        }
-        window.location.href = 'index.html'; // Asosiy sahifa endi index.html bo'ladi
-      } else {
-        alert('Email yoki parol noto\'g\'ri. Iltimos, qaytadan urinib ko\'ring.');
-      }
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert('Kirish muvaffaqiyatli amalga oshirildi.');
+          window.location.href = 'index.html';
+        })
+        .catch((error) => {
+          alert('Email yoki parol noto\'g\'ri. Iltimos, qaytadan urinib ko\'ring.');
+        });
     });
   </script>
 </body>
