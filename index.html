@@ -159,8 +159,8 @@
     <div class="container">
       <div class="logo">MONEYSTUDIO</div>
       <div class="auth-info" id="authLinks">
-        <a href="aBcDeFgHiJkLmNoPqRs_moneylog.html">Kirish</a>
-        <a href="tUvWxYzAbCdEfGhIjKl_moneyreg.html">Ro'yxatdan O'tish</a>
+        <a href="login.html">Kirish</a>
+        <a href="register.html">Ro'yxatdan O'tish</a>
       </div>
       <div class="auth-info" style="margin: 20px; text-align: center;">
         <button id="logoutButton" onclick="logout()">Hisobdan Chiqish</button>
@@ -200,13 +200,13 @@
     <a href="YzAbCdEfGhIjKlMnOpQr_plugin_delete.html" class="admin-plugin-button" style="background-color: #b30000;">PLUGIN O'CHIRISH</a>
   </div>
   
-  <!-- Firebase va boshqa JS kodlari -->
+  <!-- Firebase va Firestore hamda boshqa JS kodlari -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
     import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
     
-    // Firebase konfiguratsiyasi – bu ma'lumotlarni Firebase konsolingizdan nusxa oling
+    // Firebase konfiguratsiyasi – o'zingizning ma'lumotlaringiz bilan almashtiring
     const firebaseConfig = {
       apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
       authDomain: "moneystudio-477ba.firebaseapp.com",
@@ -217,12 +217,10 @@
       measurementId: "G-1DWKGPP7GF"
     };
     
-    // Ilovani ishga tushurish
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
     
-    // Foydalanuvchi holatini kuzatish
     onAuthStateChanged(auth, (user) => {
       if (user) {
         localStorage.setItem('isLoggedIn', 'true');
@@ -241,21 +239,19 @@
       loadPlugins();
     });
     
-    // Global logout funksiyasi
     window.logout = function() {
       signOut(auth)
         .then(() => {
           localStorage.removeItem('isLoggedIn');
           localStorage.removeItem('userEmail');
           alert("Hisobdan chiqdingiz!");
-          window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
+          window.location.href = 'login.html';
         })
         .catch((error) => {
           console.error("Sign out error:", error);
         });
     };
     
-    // Pluginlarni yuklash funksiyasi
     function loadPlugins() {
       const plugins = JSON.parse(localStorage.getItem('plugins')) || [];
       const pluginsList = document.getElementById('pluginsList');
@@ -283,7 +279,6 @@
       });
     }
     
-    // Kontekst menyusini bloklash
     document.addEventListener('contextmenu', function(event) {
       event.preventDefault();
     });
