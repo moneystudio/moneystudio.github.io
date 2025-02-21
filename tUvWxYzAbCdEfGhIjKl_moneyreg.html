@@ -6,6 +6,7 @@
   <title>Ro'yxatdan O'tish - M.Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Dizayn va umumiy uslublar */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
@@ -97,12 +98,12 @@
     import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
 
-    // Firebase konfiguratsiyasi – o'zingizning maʼlumotlaringiz bilan almashtiring
+    // Firebase konfiguratsiyasi – o'zingizning loyihangiz ma'lumotlari bilan almashtiring
     const firebaseConfig = {
       apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
       authDomain: "moneystudio-477ba.firebaseapp.com",
       projectId: "moneystudio-477ba",
-      storageBucket: "moneystudio-477ba.firebasestorage.app",
+      storageBucket: "moneystudio-477ba.appspot.com", // To'g'ri format
       messagingSenderId: "430106553611",
       appId: "1:430106553611:web:5208a92ca112b2c661460e",
       measurementId: "G-1DWKGPP7GF"
@@ -135,7 +136,11 @@
           window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
         })
         .catch((error) => {
-          alert("Xatolik: " + error.message);
+          if(error.code === "auth/email-already-in-use") {
+            alert("Bu email allaqachon ro'yxatdan o'tgan.");
+          } else {
+            alert("Xatolik: " + error.message);
+          }
         });
     });
   </script>
