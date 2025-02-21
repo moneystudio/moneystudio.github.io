@@ -97,7 +97,7 @@
       apiKey: "AIzaSyBYY28gDhju1TZ3VKjwENBSSIyqMaPVpB4",
       authDomain: "moneystudio-477ba.firebaseapp.com",
       projectId: "moneystudio-477ba",
-      storageBucket: "moneystudio-477ba.firebasestorage.app",
+      storageBucket: "moneystudio-477ba.appspot.com",
       messagingSenderId: "430106553611",
       appId: "1:430106553611:web:5208a92ca112b2c661460e",
       measurementId: "G-1DWKGPP7GF"
@@ -107,7 +107,6 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    // Agar foydalanuvchi allaqachon tizimga kirgan bo'lsa, index.html ga yo'naltirish
     onAuthStateChanged(auth, (user) => {
       if(user) {
         window.location.href = 'index.html';
