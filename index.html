@@ -161,12 +161,21 @@
       transition: background-color 0.3s ease;
     }
     .download-button:hover { background-color: #218838; }
+    .disabled-button {
+      padding: 6px 12px;
+      background-color: gray;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      pointer-events: none;
+    }
     .premium-status {
       font-size: 14px;
       font-weight: bold;
-	  margin-right: auto;
-	  color: #FFD700; /* Yoki oddiy "yellow" */
-	  display: inline-block; /* Agar kerak bo'lsa */
+      margin-right: auto;
+      color: #FFD700;
+      display: inline-block;
     }
 
     /* EMAIL RO'YXATI */
@@ -213,7 +222,7 @@
 
   <!-- BUTTON CONTAINER -->
   <div class="button-container">
-    <a href="" class="button">
+    <a href="minestax.html" class="button">
       <img src="minestax.png" alt="">
       MINESTAX
     </a>
@@ -230,7 +239,7 @@
   <!-- PLUGINS BO'LIMI -->
   <div class="plugins-container">
     <div class="plugins-text">PLUGINS</div>
-    <!-- Plugin kartalari: onclick orqali plugin.html ga yo'naltirish -->
+    <!-- Plugin kartalari: onclick orqali plugin detail sahifasiga yo'naltirish -->
     <div class="plugin" onclick="window.location.href='mstudio-plugin-advancedenchantments.html'">
       <img src="advancedenchantments.png" alt="Plugin Image" class="plugin-image">
       <div class="plugin-content">
@@ -242,6 +251,7 @@
           <span class="gray-text">Serveringizga yangi sehrlar qo‘shish imkoniyati...</span>
         </div>
         <div class="plugin-extra">
+          <a href="https://example.com/advancedenchantments.zip" class="download-button" target="_blank">Yuklab olish</a>
           <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
         </div>
       </div>
@@ -257,23 +267,51 @@
           <span class="gray-text">Serveringizni chiterlar va griferlardan himoya qiladi.</span>
         </div>
         <div class="plugin-extra">
+          <a href="https://example.com/vulcan.zip" class="download-button" target="_blank">Yuklab olish</a>
           <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
         </div>
       </div>
     </div>
     <div class="plugin" onclick="window.location.href='mstudio-plugin-chatex.html'">
-        <img src="chatex.png" alt="Plugin Image" class="plugin-image">
-        <div class="plugin-content">
-          <div class="plugin-name">ChatEx 1.13-1.20</div>
-          <div class="plugin-info">
-            <span class="gray-text">Serveringiz chatini o'zgartirishga imkon beradi.</span>
-          </div>
-          <div class="plugin-extra">
-            <div class="premium-status">&nbsp;&nbsp;Premium: No</div>
-          </div>
+      <img src="chatex.png" alt="Plugin Image" class="plugin-image">
+      <div class="plugin-content">
+        <div class="plugin-name">ChatEx 1.13-1.20</div>
+        <div class="plugin-info">
+          <span class="gray-text">Serveringiz chatini o'zgartirishga imkon beradi.</span>
         </div>
-      </a>
+        <div class="plugin-extra">
+          <a href="https://example.com/chatex.zip" class="download-button" target="_blank">Yuklab olish</a>
+          <div class="premium-status">&nbsp;&nbsp;Premium: No</div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- EMAIL RO'YXATI -->
+  <div class="email-list">
+    <h2>Foydalanuvchi Email manzillari</h2>
+    <ul>
+      <li>shoxmoneylord01@gmail.com - Premium: Yes</li>
+      <li>user2@gmail.com - Premium: Yes</li>
+      <li>user3@example.com - Premium: No</li>
+      <li>user4@example.com - Premium: No</li>
+      <li>user5@example.com - Premium: No</li>
+      <li>user6@example.com - Premium: No</li>
+      <li>user7@example.com - Premium: No</li>
+      <li>user8@example.com - Premium: No</li>
+      <li>user9@example.com - Premium: No</li>
+      <li>user10@example.com - Premium: No</li>
+      <li>user11@example.com - Premium: No</li>
+      <li>user12@example.com - Premium: No</li>
+      <li>user13@example.com - Premium: No</li>
+      <li>user14@example.com - Premium: No</li>
+      <li>user15@example.com - Premium: No</li>
+      <li>user16@example.com - Premium: No</li>
+      <li>user17@example.com - Premium: No</li>
+      <li>user18@example.com - Premium: No</li>
+      <li>user19@example.com - Premium: No</li>
+      <li>user20@example.com - Premium: No</li>
+    </ul>
   </div>
 
   <script>
@@ -288,7 +326,7 @@
     // Sahifa yuklanganda tizimga kirganligini tekshirish
     window.onload = function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
-      if (isLoggedIn) {
+      if (isLoggedIn === 'true') {
         document.getElementById('authLinks').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'block';
       } else {
@@ -302,28 +340,30 @@
       event.preventDefault();
     });
   </script>
-  <script>
-    // Sahifa yuklanganda foydalanuvchi tizimga kirgan yoki kirmaganligini aniqlash:
-    window.onload = function() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      // Agar foydalanuvchi tizimga kirgan bo'lsa:
-      if (isLoggedIn === 'true') {
-        document.getElementById('authLinks').style.display = 'none';
-        document.getElementById('logoutButton').style.display = 'block';
-      } else {
-        document.getElementById('authLinks').style.display = 'flex';
-        document.getElementById('logoutButton').style.display = 'none';
-      }
-      // Boshqa kodlaringiz (masalan, pluginlarni yuklash) ham shu yerda chaqirilishi mumkin.
-    };
 
-    // Logout funksiyasi
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('userEmail');
-      alert("Hisobdan chiqdingiz!");
-      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
-    }
+  <!-- Qo'shimcha: Premium tugmalarini tekshirish -->
+  <script>
+    window.addEventListener('load', function() {
+      // Foydalanuvchining premium holatini aniqlash (localStorage'dagi "hasPremium" o'zgaruvchisi)
+      const hasPremium = localStorage.getItem('hasPremium');
+      // Har bir plugin elementini tekshiramiz
+      const plugins = document.querySelectorAll('.plugin');
+      plugins.forEach(function(plugin) {
+        // Agar plugin nomida "green-text" elementi mavjud bo'lsa, demak bu premium plugin
+        if (plugin.querySelector('.green-text')) {
+          const downloadBtn = plugin.querySelector('.download-button');
+          if (downloadBtn) {
+            // Agar foydalanuvchi premiumga ega bo'lmasa
+            if (hasPremium !== 'true') {
+              downloadBtn.classList.remove('download-button');
+              downloadBtn.classList.add('disabled-button');
+              downloadBtn.removeAttribute('href');
+              downloadBtn.textContent = "Sizda premium yo'q";
+            }
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
