@@ -11,7 +11,48 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background-color: #f4f6f8; }
     header { padding: 20px; background: #fff; border-bottom: 1px solid #ccc; }
-    .logo { font-family: 'Rubik', sans-serif; font-size: 32px; font-weight: bold; color: #000; text-decoration: none; }
+    .container {
+        width: 90%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-family: 'Rubik', sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .main-nav {
+        display: flex;
+        gap: 20px;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .main-nav ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav ul li a:hover {
+        color: #ff7f50;
+    }
+
     .auth-info {
         display: flex;
         gap: 15px;
