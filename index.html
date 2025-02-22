@@ -12,9 +12,27 @@
     body { font-family: Arial, sans-serif; background-color: #f4f6f8; }
     header { padding: 20px; background: #fff; border-bottom: 1px solid #ccc; }
     .logo { font-family: 'Rubik', sans-serif; font-size: 32px; font-weight: bold; color: #000; text-decoration: none; }
-    .auth-info { float: right; }
-    .auth-info a, #logoutButton { margin-left: 10px; font-size: 16px; text-decoration: none; }
-    .clear { clear: both; }
+    .auth-info {
+        display: flex;
+        gap: 15px;
+        font-size: 18px;
+    }
+
+    .auth-info a {
+        font-family: 'Rubik', sans-serif;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 2px solid #333;
+        border-radius: 5px;
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .auth-info a:hover {
+        color: #fff;
+        background-color: #ff7f50;
+    }
     
     /* PREMIUM bo'limi */
     .premium-section {
@@ -199,13 +217,21 @@
   <!-- HEADER -->
   <header>
     <div class="container">
-      <a class="logo" href="#">MONEYSTUDIO</a>
-      <div class="auth-info" id="authLinks">
+      <a class="logo" href="index.html">MONEYSTUDIO</a>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">YouTube</a></li>
+        </ul>
+    </nav>
+    <div class="auth-info" id="authLinks">
         <a href="aBcDeFgHiJkLmNoPqRs_moneylog.html">Kirish</a>
         <a href="tUvWxYzAbCdEfGhIjKl_moneyreg.html">Ro'yxatdan O'tish</a>
-        <button id="logoutButton" onclick="logout()">Hisobdan Chiqish</button>
-      </div>
-      <div class="clear"></div>
+    </div>
+      <!-- Chiqish tugmasi -->
+    <div class="auth-info" style="margin: 20px; text-align: center;">
+        <button id="logoutButton" onclick="logout()" style="padding: 10px 20px; font-size: 18px; background-color: #FF4500; color: white; border: none; border-radius: 5px; cursor: pointer; display: none;">
+            Hisobdan Chiqish
+        </button>
     </div>
   </header>
 
@@ -284,33 +310,6 @@
     </div>
   </div>
 
-  <script>
-    // Logout funksiyasi
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('userEmail');
-      alert("Hisobdan chiqdingiz!");
-      window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
-    }
-
-    // Sahifa yuklanganda tizimga kirganligini tekshirish
-    window.onload = function() {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      if (isLoggedIn === 'true') {
-        document.getElementById('authLinks').style.display = 'none';
-        document.getElementById('logoutButton').style.display = 'block';
-      } else {
-        document.getElementById('authLinks').style.display = 'flex';
-        document.getElementById('logoutButton').style.display = 'none';
-      }
-    };
-
-    // Context menu ni bloklash
-    document.addEventListener('contextmenu', function(event) {
-      event.preventDefault();
-    });
-  </script>
-
   <!-- Qo'shimcha: Premium tugmalarini tekshirish -->
   <script>
     window.addEventListener('load', function() {
@@ -334,13 +333,28 @@
         }
       });
     });
-  
-  function logout() {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userEmail');
-    alert("Hisobdan chiqdingiz!");
-    window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html';
-  }
   </script>
+  <script>
+        // Tizimga kirganligini tekshirish
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+            // Foydalanuvchi tizimga kirgan bo'lsa
+            if (isLoggedIn) {
+                document.getElementById('authLinks').style.display = 'none'; // Havolalarni yashirish
+                document.getElementById('logoutButton').style.display = 'block'; // Chiqish tugmasini ko'rsatish
+            } else {
+                document.getElementById('authLinks').style.display = 'flex'; // Havolalarni ko'rsatish
+                document.getElementById('logoutButton').style.display = 'none'; // Chiqish tugmasini yashirish
+            }
+        };
+
+        // Logout function
+        function logout() {
+            // Foydalanuvchini tizimdan chiqarish
+            localStorage.removeItem('isLoggedIn'); // Tizimdan chiqish
+            window.location.href = 'aBcDeFgHiJkLmNoPqRs_moneylog.html'; // Kirish sahifasiga qaytish
+        }
+    </script>
 </body>
 </html>
