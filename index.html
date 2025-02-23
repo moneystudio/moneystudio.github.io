@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MONEYSTUDIO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONEYSTUDIO</title>
+    <link rel="icon" type="image/png" href="moneystudio.jpg">
 </head>
 <body>
-
-  <nav>
-    <a href="#" onclick="loadPage('inde.html')">Index Sahifa</a>
-  </nav>
-
-  <div id="content">Bu yerga index.html yuklanadi...</div>
-
-  <script>
-    function loadPage(page) {
-      fetch(page)
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById("content").innerHTML = html;
-        })
-        .catch(error => console.error("Sahifa yuklanmadi:", error));
-    }
-  </script>
-
+    <iframe src="mstudio.html" width="100%" height="1000px" style="border:none;"></iframe>
 </body>
 </html>
