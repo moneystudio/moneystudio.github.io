@@ -162,5 +162,12 @@
       loadPluginDetail();
     };
   </script>
+  <script>
+    if (window.self === window.top) {
+        // Agar sahifa `iframe` ichida ochilmagan bo‘lsa, uni iframe ichiga joylashtirish uchun boshqa sahifaga yo‘naltiramiz
+        window.location.href = "mstudio-plugin-stashfortune.html";
+    }
+</script>
+
 </body>
 </html>
