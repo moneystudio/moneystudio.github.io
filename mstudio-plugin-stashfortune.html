@@ -101,7 +101,7 @@
       pluginInfo: "Bu plugin serveringga ajoyib menyuni qoshadi va serverigiz oyinchilari ushbu menyuning vazifalarini bajargan holda tasodifiy sovgalarni yutib olishi mumkun. Ko'proq Bilish: https://youtu.be/8TwsHerLi_U",
       pluginFileLink: "https://github.com/moneystudio/moneystudio.github.io/releases/download/untagged-d20b9771e458f9b9573b/StashFortune.zip",
       isPremium: true,  // Premium bo'lsa: true, bepul bo'lsa: false
-      pluginURL: "" // Agar qo'shimcha havola bo'lsa
+      pluginURL: "https://www.youtube.com/watch?v=8TwsHerLi_U" // Agar qo'shimcha havola bo'lsa
     };
 
     // Agar foydalanuvchi tizimga kirgan bo'lsa, localStorage'da "userEmail" va "isLoggedIn" saqlanadi.
@@ -124,6 +124,17 @@
           <p><strong>Plugin haqida:</strong> ${pluginData.pluginInfo}</p>
         </div>
       `;
+
+      // Agar `pluginURL` bo'sh bo'lmasa, "Ko'proq Bilish" havolasini qo'shamiz
+      if (pluginData.pluginURL) {
+        detailHTML += `
+          <div style="text-align: center; margin-bottom: 15px;">
+            <a href="${pluginData.pluginURL}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">
+              ➡️ Ko'proq Bilish
+            </a>
+          </div>
+        `;
+      }
 
       // Yuklab olish tugmasi
       let downloadHTML = "";
