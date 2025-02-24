@@ -12,28 +12,19 @@
       padding: 0;
       height: 100%;
     }
-    /* Asosiy iframe konteyneri: desktop uchun 16:9 nisbat */
+    /* Iframe to'liq ekran qilish */
     .responsive-iframe-container {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%; /* 9/16 nisbat */
-      overflow: hidden;
-    }
-    .responsive-iframe-container iframe {
-      position: absolute;
+      position: fixed; /* Butun ekran bo'ylab */
       top: 0;
       left: 0;
       width: 100%;
+      height: 100vh; /* To'liq ekran balandligi */
+      overflow: hidden;
+    }
+    .responsive-iframe-container iframe {
+      width: 100%;
       height: 100%;
       border: none;
-    }
-    /* Ekran eni 768px va kichiklar uchun: avtomatik mobil uslub */
-    @media screen and (max-width: 768px) {
-      .responsive-iframe-container {
-        height: 100vh;
-        padding-bottom: 0;
-      }
     }
   </style>
 </head>
@@ -41,17 +32,5 @@
   <div class="responsive-iframe-container">
     <iframe src="inde.html" allowfullscreen></iframe>
   </div>
-  <script>
-    // Agar foydalanuvchi mobil qurilmadan kirayotgan bo‘lsa,
-    // hatto desktop versiya tanlangan bo‘lsa ham, konteynerni 100vh ga o‘rnatamiz.
-    document.addEventListener("DOMContentLoaded", function() {
-      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if(isMobile) {
-        var container = document.querySelector('.responsive-iframe-container');
-        container.style.height = "100vh";
-        container.style.paddingBottom = "0";
-      }
-    });
-  </script>
 </body>
 </html>
