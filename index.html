@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONEYSTUDIO</title>
-    <link rel="icon" type="image/png" href="moneystudio.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONEYSTUDIO</title>
+  <link rel="icon" type="image/png" href="moneystudio.jpg">
+  <style>
+    /* Sahifa bo'sh joylarini olib tashlaymiz */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    /* Iframe uchun konteyner */
+    .responsive-iframe-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 nisbat uchun (9/16 * 100) */
+      overflow: hidden;
+    }
+    /* Iframe uslubi */
+    .responsive-iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
-    <iframe src="inde.html" width="100%" height="1000px" style="border:none;"></iframe>
+  <div class="responsive-iframe-container">
+    <iframe src="inde.html" allowfullscreen></iframe>
+  </div>
 </body>
 </html>
