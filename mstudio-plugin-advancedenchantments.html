@@ -1,7 +1,19 @@
 <!DOCTYPE html>
+
+
+
+
+
+
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
+
+
+
+
+
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Plugin Tafsilotlari - M.Studio</title>
   <link rel="icon" type="image/png" href="moneystudio.jpg">
@@ -9,6 +21,14 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+
+
+
+
+
+
+
+      
       background-color: #f4f6f8;
       padding: 20px;
     }
@@ -28,6 +48,13 @@
     }
     .plugin-image {
       width: 100%;
+
+
+
+
+
+
+      
       max-width: 300px;
       display: block;
       margin: 0 auto 20px;
@@ -48,6 +75,18 @@
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+
+
+
+
+
+
+
+
+
+
+
+      
     }
     .download-button {
       padding: 10px 20px;
@@ -59,6 +98,17 @@
       transition: background-color 0.3s ease;
       font-family: 'Rubik', sans-serif;
     }
+
+
+
+
+
+
+
+
+
+
+    
     .download-button:hover {
       background-color: #FF6347;
     }
@@ -66,9 +116,31 @@
       padding: 10px 20px;
       background-color: gray;
       color: #fff;
+
+
+
+
+
+
+
+
+
+
+      
       border-radius: 5px;
       font-family: 'Rubik', sans-serif;
       font-weight: bold;
+
+
+
+
+
+
+
+
+
+
+      
       pointer-events: none;
     }
     .premium-status {
@@ -85,32 +157,78 @@
     <!-- Plugin tafsilotlari shu yerga dinamik qo'shiladi -->
   </div>
 
+
+
+
+
+
+
+
+
+
+  
   <script>
     // Premium foydalanuvchilar ro'yxati (o'zgartiring yoki kengaytiring):
     const premiumEmailList = [
       "shoxmoneylord01@gmail.com",
       "afruz908@gmail.com"
       // Kerakli premium email manzillarini shu yerga qo'shing
+
+
+
+
+
+
+
+      
     ];
 
     // Misol uchun, ushbu plugin tafsilotlari ma'lumotlari (odatda bu ma'lumotlar backenddan keladi)
     const pluginData = {
       pluginName: "AdvancedEnchantments 1.17-1.20",
+
+
+      
       pluginImage: "advancedenchantments.png",
       pluginCategory: "plugins",
+
+
+
+      
       pluginInfo: "Bu plugin server spawn nuqtasini sozlashni osonlashtiradi. Qisqacha izoh: Serveringizga yangi sehrlar qo'shish imkoniyati va boshqa ko'plab foydali funksiyalar.",
       pluginFileLink: "https://github.com/moneystudio/mstudio.github.io/releases/download/untagged-d20b9771e458f9b9573b/AdvancedEnchantments-9.4.12.jar",
       isPremium: true,  // Premium bo'lsa: true, bepul bo'lsa: false
+
+
+
+
+      
       pluginURL: "https://example.com" // Agar qo'shimcha havola bo'lsa
     };
 
     // Agar foydalanuvchi tizimga kirgan bo'lsa, localStorage'da "userEmail" va "isLoggedIn" saqlanadi.
     // Bu misolda, biz foydalanuvchi emailini simulyatsiya qilamiz:
+
+
+
+
+
+
+
+    
     // localStorage.setItem('isLoggedIn', 'true');
     // localStorage.setItem('userEmail', 'user2@gmail.com'); // yoki boshqa email
 
     // Yuklab olish tugmasini tayyorlash va premium holatini tekshirish
     function loadPluginDetail() {
+
+
+
+
+
+
+
+      
       const detailContainer = document.getElementById('pluginDetail');
       const userEmail = localStorage.getItem('userEmail');
       const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -119,12 +237,18 @@
       let detailHTML = `
         <h1>${pluginData.pluginName}</h1>
         <img src="${pluginData.pluginImage}" alt="Plugin Image" class="plugin-image">
+
+
+
+
+        
         <div class="plugin-info">
           <p><strong>Toifa:</strong> ${pluginData.pluginCategory}</p>
           <p><strong>Plugin haqida:</strong> ${pluginData.pluginInfo}</p>
         </div>
       `;
 
+      
       // Yuklab olish tugmasi
       let downloadHTML = "";
       if (pluginData.isPremium) {
@@ -134,12 +258,27 @@
           downloadHTML = `
             <div class="action-buttons">
               <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
+
+
+
+
+
+
+
+              
             </div>
             <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
           `;
         } else {
           // Foydalanuvchi tizimga kirmagan yoki email premium ro'yxatida emas
           downloadHTML = `
+
+
+
+
+
+
+          
             <div class="action-buttons">
               <a class="disabled-button">Sizda premium yo'q</a>
             </div>
@@ -147,21 +286,61 @@
           `;
         }
       } else {
+
+
+
+
+
+
+
+
+
+
+        
         // Bepul plugin uchun
         downloadHTML = `
           <div class="action-buttons">
             <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
           </div>
           <div class="premium-status">&nbsp;&nbsp;Premium: No</div>
+
+
+
+
+
+
+
+          
         `;
       }
 
       detailContainer.innerHTML = detailHTML + downloadHTML;
     }
 
+
+
+
+
+
+
+
+
+
+
+    
+
     window.onload = function() {
       loadPluginDetail();
     };
   </script>
+
+
+
+
+
+
+
+
+  
 </body>
 </html>
