@@ -1,62 +1,21 @@
 <!DOCTYPE html>
 <html lang="uz">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 <head>
   <meta charset="UTF-8" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Plugin Tafsilotlari - M.Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
   <link rel="icon" type="image/png" href="moneystudio.jpg">
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bruhstudio.ru/assets/css.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
       padding: 20px;
     }
     .plugin-detail-container {
@@ -65,54 +24,26 @@
       background-color: #fff;
       border: 2px solid #ccc;
       border-radius: 10px;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
       padding: 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
+	  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+      border-radius: 0.5rem;
     }
     .plugin-detail-container h1 {
       margin-bottom: 20px;
       font-family: 'Rubik', sans-serif;
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
+      font-size: xx-large;
+	  
     }
     .plugin-image {
       width: 100%;
       max-width: 300px;
       display: block;
       margin: 0 auto 20px;
-
-
-
-
-
-
-
-
-
-
-
-      
       border-radius: 10px;
       object-fit: cover;
     }
@@ -121,28 +52,15 @@
       line-height: 1.5;
       margin-bottom: 20px;
       text-align: left;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
     }
     .plugin-info p {
       margin-bottom: 10px;
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
     }
     .action-buttons {
       display: flex;
@@ -153,24 +71,6 @@
     .download-button {
       padding: 10px 20px;
       background-color: #FF4500;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
       color: #fff;
       text-decoration: none;
       font-weight: bold;
@@ -189,19 +89,6 @@
       font-family: 'Rubik', sans-serif;
       font-weight: bold;
       pointer-events: none;
-
-
-
-
-
-
-
-
-
-
-
-
-      
     }
     .premium-status {
       font-size: 14px;
@@ -211,31 +98,57 @@
       margin-top: 10px;
     }
   </style>
+  
 </head>
 <body>
-  <div class="plugin-detail-container" id="pluginDetail">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  <div class="plugin-detail-container " id="pluginDetail">
     <!-- Plugin tafsilotlari shu yerga dinamik qo'shiladi -->
   </div>
+		<footer class="bg-white dark:bg-gray-900 mt-[10rem]" id="footer">
+		  <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+			<div class="md:flex md:justify-between">
+			  <div class="mb-6 md:mb-0">
+				<a href="tg://resolve?domain=MONEYSTUDIOUZ" target="_blank" class="flex items-center">
+				  <img src="moneystudio.jpg" alt="Логотип MONEYSTUDIO" class="h-8 me-3" style="border-radius: 5px;"/>
+				  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ">BruhStudio</span>
+				</a>
+			  </div>
+			  <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+				<div>
+				  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Web Manzillar</h2>
+				  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+					<li>
+					  <a href="BruhStudio.html" class="hover:underline">Bosh Sahifa&nbsp;🏚</a>
+					</li>
+					<li >
+					  <a href="tg://resolve?domain=ScoreWorldAdmin" class="hover:underline">Muloqat Uchun&nbsp;☎</a>
+					</li>
+				  </ul>
+				</div>
+				<div>
+				  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Ijtimoiy Tarmoqlar</h2>
+				  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+					<li>
+					  <a href="tg://resolve?domain=MONEYSTUDIOUZ" class="hover:underline">Telegram&nbsp;📲</a>
+					</li>
+					<li>
+					  <a href="https://www.youtube.com/@MONEYSTUDIOUZ" class="hover:underline">YouTube&nbsp;💻</a>
+					</li>
+					<li>
+					  <a href="tg://resolve?domain=ScoreWorldUz" class="hover:underline">ScoreWorld - Server&nbsp;🖥</a>
+					</li>
+				  </ul>
+				</div>
+				<div>
+				</div>
+			  </div>
+			</div>
+			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+			<div class="sm:flex sm:items-center sm:justify-between">
+			  <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025-2026 <a href="tg://resolve?domain=SHOXMONEY_CHANNEL" class="hover:underline">Created by SHOXMONEY</a></span>
+		  </div>
+		</div>
+	  </footer>
 
   <script>
     // Premium foydalanuvchilar ro'yxati (o'zgartiring yoki kengaytiring):
@@ -247,35 +160,13 @@
 
     // Misol uchun, ushbu plugin tafsilotlari ma'lumotlari (odatda bu ma'lumotlar backenddan keladi)
     const pluginData = {
-      pluginName: "StashFortune 1.17.1",
+      pluginName: "StashFortune 1.17.1 ",
       pluginImage: "moneystudio.jpg",
-      pluginCategory: "plugins",
-      pluginInfo: "Bu plugin serveringga ajoyib menyuni qoshadi va serverigiz oyinchilari ushbu menyuning vazifalarini bajargan holda tasodifiy sovgalarni yutib olishi mumkun. Ko'proq Bilish: https://youtu.be/8TwsHerLi_U",
+      pluginCategory: "PLUGINS",
+      pluginInfo: "Bu plugin serveringga ajoyib menyuni qoshadi va serverigiz oyinchilari ushbu menyuning vazifalarini bajargan holda tasodifiy sovgalarni yutib olishi mumkun.",
       pluginFileLink: "https://github.com/moneystudio/moneystudio.github.io/releases/download/untagged-d20b9771e458f9b9573b/StashFortune.zip",
       isPremium: true,  // Premium bo'lsa: true, bepul bo'lsa: false
       pluginURL: "https://www.youtube.com/watch?v=8TwsHerLi_U" // Agar qo'shimcha havola bo'lsa
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
     };
 
     // Agar foydalanuvchi tizimga kirgan bo'lsa, localStorage'da "userEmail" va "isLoggedIn" saqlanadi.
@@ -299,29 +190,6 @@
         </div>
       `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
       // Agar `pluginURL` bo'sh bo'lmasa, "Ko'proq Bilish" havolasini qo'shamiz
       if (pluginData.pluginURL) {
         detailHTML += `
@@ -331,33 +199,6 @@
             </a>
           </div>
         `;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
       }
 
       // Yuklab olish tugmasi
@@ -371,32 +212,6 @@
               <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
             </div>
             <div class="premium-status">&nbsp;&nbsp;Premium: Yes</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
           `;
         } else {
           // Foydalanuvchi tizimga kirmagan yoki email premium ro'yxatida emas
@@ -413,48 +228,8 @@
           <div class="action-buttons">
             <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
           <div class="premium-status">&nbsp;&nbsp;Premium: No</div>
         `;
-
-
-
-
-
-        
       }
 
       detailContainer.innerHTML = detailHTML + downloadHTML;
@@ -464,16 +239,6 @@
       loadPluginDetail();
     };
   </script>
-
-
-
-
-
-
-
-
-
-
   
 </body>
 </html>
