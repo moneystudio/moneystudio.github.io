@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ro'yxatdan O'tish - M.Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: rgb(17 24 39);
+    }
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      color: white;	
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	  background-color: rgb(31 41 55);
+    }
+    .logo {
+      font-family: 'Rubik', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      font-size: 14px;
+      color: white;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: rgb(37 99 235);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: rgb(19 81 219);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: white;
+    }
+    .footer a {
+      color: #FF4500;
+      text-decoration: none;
+      color: rgb(37 99 235);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">MONEYSTUDIO</div>
+    <h1>RO'YXATDAN O'TISH</h1>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Parol:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Parolni tasdiqlash:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <button type="submit">Ro'yxatdan O'tish</button>
+    </form>
+    <div class="footer">
+      <p>Allaqachon hisobingiz bormi? <a href="login.html">Kirish</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Foydalanuvchi allaqachon tizimga kirganligini tekshirish
+    if (localStorage.getItem('isLoggedIn')) {
+      window.location.href = 'bruhstudio.html'; // Agar foydalanuvchi kirgan bo'lsa, asosiy sahifa index.html bo'ladi
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      // Parolni tekshirish
+      if (password !== confirmPassword) {
+        alert('Parollar mos kelmaydi. Iltimos, qaytadan urinib ko\'ring.');
+        return;
+      }
+
+      // Mavjud foydalanuvchilarni olish
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Email allaqachon mavjudligini tekshirish
+      if (users.some(user => user.email.toLowerCase() === email.toLowerCase())) {
+        alert('Bu email allaqachon ro\'yxatdan o\'tgan.');
+        return;
+      }
+
+      // Yangi foydalanuvchini qo‘shish
+      users.push({ email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Kirish holatini saqlash
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', email);
+
+      alert('Ro‘yxatdan o‘tish muvaffaqiyatli! Endi tizimga kirasiz.');
+      window.location.href = 'login.html'; // Bu yerda login sahifasiga yo'naltirishni saqlashingiz mumkin
+    });
+  </script>
+</body>
+</html>
