@@ -8,7 +8,7 @@ const pluginData = {
   pluginImage: "anarxiya.jpg",
   pluginCategory: "ᴍɪɴᴇꜱᴛᴀx",
   pluginInfo: "ᴍɪɴᴇꜱᴛᴀx | ᴀɴᴀʀxɪʏᴀ . Ushbu sborkada hamma funksiyalar to'liqligicha nusxalangan.",
-  pluginFileLink: "https://store5.gofile.io/download/web/8668e67d-ee30-4e9d-80b3-5477cf56ef96/ANARXIYA.zip",
+  pluginFileLink: "https://t.me/SHoXBoSSYT",
   isPremium: true,
   pluginURL: "https://youtu.be/PCCEf3xfZXY?si=Hd7YmkVjt89rbDgE"
 };
