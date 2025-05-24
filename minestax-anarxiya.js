@@ -51,7 +51,7 @@ function loadPluginDetail() {
         <div class="action-buttons">
           <a href="https://t.me/SHoXBoSSYT" class="disabled-button">Siz buni sotib olmagansiz</a>
         </div>
-        <div class="premium-status">&nbsp;&nbsp;ᴜꜱʜʙᴜ ʀᴇꜱᴜʀꜱ ᴘᴜʟʟɪᴋ. ꜱᴏᴛɪʙ ᴏʟɪꜱʜ ᴜᴄʜᴜɴ ᴛᴇʟᴇɢʀᴀᴍ - @ꜱʜᴏxʙᴏꜱꜱʏᴛ​​</div>
+        <div class="premium-status">&nbsp;&nbsp;​🇺​​🇸​​🇭​​🇧​​🇺​ ​🇷​​🇪​​🇸​​🇺​​🇷​​🇸​ ​🇵​​🇺​​🇱​​🇱​​🇮​​🇰​. ​🇸​​🇴​​🇹​​🇮​​🇧​ ​🇴​​🇱​​🇮​​🇸​​🇭​ ​🇺​​🇨​​🇭​​🇺​​🇳​ ​🇹​​🇪​​🇱​​🇪​​🇬​​🇷​​🇦​​🇲​ - @​🇸​​🇭​​🇴​​🇽​​🇧​​🇴​​🇸​​🇸​​🇾​​🇹​​​</div>
       `;
     }
   } else {
