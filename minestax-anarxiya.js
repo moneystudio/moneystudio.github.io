@@ -22,8 +22,8 @@ function loadPluginDetail() {
     <h1>${pluginData.pluginName}</h1>
     <img src="${pluginData.pluginImage}" alt="Plugin Image" class="plugin-image">
     <div class="plugin-info">
-      <p><strong>Turi:</strong> ${pluginData.pluginCategory}</p>
-      <p><strong>Plugin haqida:</strong> ${pluginData.pluginInfo}</p>
+      <p><strong>ᴛᴜʀɪ:</strong> ${pluginData.pluginCategory}</p>
+      <p><strong>ꜱʙᴏʀᴋᴀ ʜᴀQɪᴅᴀ:</strong> ${pluginData.pluginInfo}</p>
     </div>
   `;
 
@@ -31,7 +31,7 @@ function loadPluginDetail() {
     detailHTML += `
       <div style="text-align: center; margin-bottom: 15px;">
         <a href="${pluginData.pluginURL}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">
-          ➡️ Ko'proq Bilish
+          ➡️ ᴋᴏ'ᴘʀᴏQ ʙɪʟɪꜱʜ
         </a>
       </div>
     `;
