@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plugin Tafsilotlari - M.Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <script src="css2.css"></script> 
+  <link rel="icon" type="image/png" href="moneystudio.jpg">
+  <link rel="stylesheet" href="css.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+      padding: 20px;
+    }
+    .plugin-detail-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+	  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+      border-radius: 0.5rem;
+    }
+    .plugin-detail-container h1 {
+      margin-bottom: 20px;
+      font-family: 'Rubik', sans-serif;
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
+      font-size: xx-large;
+	  
+    }
+    .plugin-image {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .plugin-info {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: left;
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
+    }
+    .plugin-info p {
+      margin-bottom: 10px;
+	  color: rgb(255 255 255);
+	  font-weight: 700;
+      line-height: 1.75rem;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .download-button {
+      padding: 10px 20px;
+      background-color: rgb(37 99 235);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      font-family: 'Rubik', sans-serif;
+    }
+    .download-button:hover {
+      background-color: rgb(19 81 219);
+    }
+    .disabled-button {
+      padding: 10px 20px;
+      background-color: gray;
+      color: #fff;
+      border-radius: 5px;
+      font-family: 'Rubik', sans-serif;
+      font-weight: bold;
+      pointer-events: none;
+    }
+    .premium-status {
+      font-size: 14px;
+      font-weight: bold;
+      color: white; /* Sariq rang */
+      display: inline-block;
+      margin-top: 10px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="plugin-detail-container " id="pluginDetail">
+    <!-- Plugin tafsilotlari shu yerga dinamik qo'shiladi -->
+  </div>
+
+  <script>
+    // Premium foydalanuvchilar ro'yxati (o'zgartiring yoki kengaytiring):
+    const premiumEmailList = [
+      "shoxmoneylord01@gmail.com",
+      "afruz908@gmail.com"
+      // Kerakli premium email manzillarini shu yerga qo'shing
+    ];
+
+    // Misol uchun, ushbu plugin tafsilotlari ma'lumotlari (odatda bu ma'lumotlar backenddan keladi)
+    const pluginData = {
+      pluginName: "StashFortune 1.17.1 ",
+      pluginImage: "moneystudio.jpg",
+      pluginCategory: "PLUGINS",
+      pluginInfo: "Bu plugin serveringga ajoyib menyuni qoshadi va serverigiz oyinchilari ushbu menyuning vazifalarini bajargan holda tasodifiy sovgalarni yutib olishi mumkun.",
+      pluginFileLink: "https://github.com/moneystudio/moneystudio.github.io/releases/download/untagged-d20b9771e458f9b9573b/StashFortune.zip",
+      isPremium: true,  // Premium bo'lsa: true, bepul bo'lsa: false
+      pluginURL: "https://www.youtube.com/watch?v=8TwsHerLi_U" // Agar qo'shimcha havola bo'lsa
+    };
+
+    // Agar foydalanuvchi tizimga kirgan bo'lsa, localStorage'da "userEmail" va "isLoggedIn" saqlanadi.
+    // Bu misolda, biz foydalanuvchi emailini simulyatsiya qilamiz:
+    // localStorage.setItem('isLoggedIn', 'true');
+    // localStorage.setItem('userEmail', 'user2@gmail.com'); // yoki boshqa email
+
+    // Yuklab olish tugmasini tayyorlash va premium holatini tekshirish
+    function loadPluginDetail() {
+      const detailContainer = document.getElementById('pluginDetail');
+      const userEmail = localStorage.getItem('userEmail');
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+      // Tayyor HTML tuzilishi:
+      let detailHTML = `
+        <h1>${pluginData.pluginName}</h1>
+        <img src="${pluginData.pluginImage}" alt="Plugin Image" class="plugin-image">
+        <div class="plugin-info">
+          <p><strong>Turi:</strong> ${pluginData.pluginCategory}</p>
+          <p><strong>Plugin haqida:</strong> ${pluginData.pluginInfo}</p>
+        </div>
+      `;
+
+      // Agar `pluginURL` bo'sh bo'lmasa, "Ko'proq Bilish" havolasini qo'shamiz
+      if (pluginData.pluginURL) {
+        detailHTML += `
+          <div style="text-align: center; margin-bottom: 15px;">
+            <a href="${pluginData.pluginURL}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">
+              ➡️ Ko'proq Bilish
+            </a>
+          </div>
+        `;
+      }
+
+      // Yuklab olish tugmasi
+      let downloadHTML = "";
+      if (pluginData.isPremium) {
+        // Premium plugin
+        if (isLoggedIn && userEmail && premiumEmailList.includes(userEmail.toLowerCase())) {
+          // Premium foydalanuvchi
+          downloadHTML = `
+            <div class="action-buttons">
+              <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
+            </div>
+            <div class="premium-status">&nbsp;&nbsp;Premium resurs</div>
+          `;
+        } else {
+          // Foydalanuvchi tizimga kirmagan yoki email premium ro'yxatida emas
+          downloadHTML = `
+            <div class="action-buttons">
+              <a class="disabled-button">Sizda premium yo'q</a>
+            </div>
+            <div class="premium-status">&nbsp;&nbsp;Premium resurs</div>
+          `;
+        }
+      } else {
+        // Bepul plugin uchun
+        downloadHTML = `
+          <div class="action-buttons">
+            <a href="${pluginData.pluginFileLink}" download class="download-button">Yuklab olish</a>
+          </div>
+          <div class="premium-status">&nbsp;&nbsp;</div>
+        `;
+      }
+
+      detailContainer.innerHTML = detailHTML + downloadHTML;
+    }
+
+    window.onload = function() {
+      loadPluginDetail();
+    };
+  </script>
+  
+</body>
+</html>
