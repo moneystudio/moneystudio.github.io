@@ -1,11 +1,12 @@
 
+
 	
 	<!DOCTYPE html>
 	<html lang="ru">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>BruhStudio</title>
+		<title>Bosh Sahifa - MONEYSTUDIO</title>
 		<script src="css2.css"></script> 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,8 +110,11 @@
 							<a href="#" class="hover:text-blue-400 transition-colors">Murojat Uchun&nbsp;&nbsp;&nbsp;&nbsp;</a>
 						</li>
 						<li>
-							<a href="aBcDeFgHiJkLmNoPqRs_moneylog.html" class="hover:text-blue-400 transition-colors">Kirish</a>
+							<a href="login.html" id="authLinks" class="hover:text-blue-400 transition-colors">Kirish</a>
 						</li>
+						<div
+                            <button id="logoutButton" class="hover:text-blue-400 transition-colors" onclick="logout()">Chiqish</button>
+						</div>
 					</ul>
 				</div>
 			</header>
@@ -141,16 +145,16 @@
 
 			<div class="container mx-auto px-4">
 				<div class="rounded-[1.5rem] p-6 max-w-[800px] mx-auto">
-					<h2 class="text-2xl font-bold mb-6 text-center">Ресурсы</h2>
+					<h2 class="text-2xl font-bold mb-6 text-center">Resurslar</h2>
 					<div class="flex justify-center gap-4">
-						<a href="#" onclick="filterItems('all')" id="filter-all" class="filter-btn bg-blue-600 p-4 rounded-lg text-center">
-							Главная
+						<a href="index.html" onclick="filterItems('all')" id="filter-all" class="filter-btn bg-blue-600 hover:bg-gray-600 p-4 rounded-lg text-center">
+							Bosh Menyu
 						</a>
-						<a href="#" onclick="filterItems('sborka')" id="filter-sborka" class="filter-btn bg-gray-700 hover:bg-gray-600 p-4 rounded-lg text-center">
-							Сборки
+						<a href="plugin.html" onclick="filterItems('plugin')" id="filter-plugin" class="filter-btn bg-blue-600 hover:bg-gray-600 p-4 rounded-lg text-center">
+							Plugin
 						</a>
-						<a href="#" onclick="filterItems('plugin')" id="filter-plugin" class="filter-btn bg-gray-700 hover:bg-gray-600 p-4 rounded-lg text-center">
-							Плагины
+						<a href="minestax.html" onclick="filterItems('plugin')" id="filter-plugin" class="filter-btn bg-blue-600 hover:bg-gray-600 p-4 rounded-lg text-center">
+							MINESTAX
 						</a>
 					</div>
 				</div>
@@ -160,19 +164,112 @@
 				<div id="content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
 					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
 						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
-						data-id="5"
-						data-type="sborka"
-						data-title="Сборка BruhTime v17.0"
-						data-description="Уникальная сборка Funtime, здесь скопированы многие механики и функции с FunTime.su. А главное - Бесплатно"
-						data-image="https://i.imgur.com/d8RJGal.jpeg"
-						data-file-url="https://workupload.com/file/YUCGD4pPZ5p"
-					        onclick="window.location.href='mstudio-plugin-stashfortune.html'"
-						<img src="https://i.imgur.com/d8RJGal.jpeg" alt="Сборка BruhTime v17.0" class="w-full h-48 object-cover rounded mb-4 mx-auto">
-						<h3 class="text-xl font-bold mb-2 text-center">Сборка BruhTime v17.0</h3>
+					    onclick="window.location.href='stashfortune.html'">
+						<img src="moneystudio.jpg" alt="Сборка BruhTime v17.0" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">StashFortune 1.17.1</h3>
 						<p class="text-gray-400 text-center">
-						Уникальная сборка Funtime, здесь скопированы многие механ...
+						Bu plugin serveringga ajoyib menyuni qoshadi...
 						</p>
-					</div>			
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='PushMenu.html'">
+						<img src="moneystudio.jpg" alt="PushMenu" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">PushMenu 1.17.1</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizga moderatorlar uchun...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='ExcellentCrates.html'">
+						<img src="ExcellentCrates.jpg" alt="ExcellentCrates" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">ExcellentCrates</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizga keyslar qoshadi...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='LiteBans.html'">
+						<img src="LiteBans.jpg" alt="LiteBans" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">LiteBans</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizda banlarni...
+						</p>	
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='LksTnt.html'">
+						<img src="LksTnt.jpg" alt="LksTnt" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">LksTnt</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizga TNTlar qoshadi...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='AdvancedEnchantments.html'">
+						<img src="AdvancedEnchantments.jpg" alt="AdvancedEnchantments" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">AdvancedEnchantments</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizga ajoyib sehrlar...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='BetterEnderChest.html'">
+						<img src="BetterEnderChest.jpg" alt="BetterEnderChest" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">BetterEnderChest</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizda enderchestlarni...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='CoreProtect.html'">
+						<img src="CoreProtect.jpg" alt="CoreProtect" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">CoreProtect</h3>
+						<p class="text-gray-400 text-center">
+						Serveringni himoya qilishga...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='LuckPerms.html'">
+						<img src="LuckPerms.jpg" alt="LuckPerms" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">LuckPerms</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizga donat...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='PlugManX.html'">
+						<img src="PlugManX.jpg" alt="PlugManX" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">PlugManX</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizdagi pluginlarni...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='WorldEdit.html'">
+						<img src="WorldEdit.jpg" alt="WorldEdit" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">WorldEdit</h3>
+						<p class="text-gray-400 text-center">
+						Serveringzni boshqarishni yengillashtiradi...
+						</p>
+					</div>
+					<div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"
+						class="bg-gray-800 rounded-lg p-6 cursor-pointer hover:bg-gray-750 w-full max-w-[400px] transform transition-all hover:scale-105 duration-300"
+					    onclick="window.location.href='WorldGuard.html'">
+						<img src="WorldGuard.jpg" alt="WorldGuard" class="h-48 object-cover rounded mb-4 mx-auto">
+						<h3 class="text-xl font-bold mb-2 text-center">WorldGuard</h3>
+						<p class="text-gray-400 text-center">
+						Serveringizdagi worldlarni himoya qilishga...
+						</p>
+					</div>
 				</div>
 				<div id="empty-message" class="text-center text-gray-400 hidden">
 					В этой секции пока ничего нет
@@ -187,7 +284,7 @@
 			  <div class="mb-6 md:mb-0">
 				<a href="tg://resolve?domain=MONEYSTUDIOUZ" target="_blank" class="flex items-center">
 				  <img src="moneystudio.jpg" alt="Логотип MONEYSTUDIO" class="h-8 me-3" style="border-radius: 5px;"/>
-				  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ">BruhStudio</span>
+				  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ">MONEYSTUDIO</span>
 				</a>
 			  </div>
 			  <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -256,38 +353,26 @@ function _0x5c15c2(_0x46458e,_0x13f4da,_0x377318,_0x1652a5,_0xf50338){return _0x
 		</script>
 		
   <script>
-    // Agar foydalanuvchi allaqachon tizimga kirgan bo'lsa, asosiy sahifaga o'tkazish
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      window.location.href = 'index.html';
-    }
+        // Tizimga kirganligini tekshirish
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+            // Foydalanuvchi tizimga kirgan bo'lsa
+            if (isLoggedIn) {
+                document.getElementById('authLinks').style.display = 'none'; // Havolalarni yashirish
+                document.getElementById('logoutButton').style.display = 'block'; // Chiqish tugmasini ko'rsatish
+            } else {
+                document.getElementById('authLinks').style.display = 'flex'; // Havolalarni ko'rsatish
+                document.getElementById('logoutButton').style.display = 'none'; // Chiqish tugmasini yashirish
+            }
+        };
 
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      // LocalStorage'dan foydalanuvchilar ro'yxatini olish
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-
-      // Email va parol bo'yicha foydalanuvchini topish
-      let user = users.find(user => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
-
-      if (user) {
-        alert('Kirish muvaffaqiyatli amalga oshirildi.');
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', email);
-        // Agar foydalanuvchining premium belgisi bo'lsa, "hasPremium" kalitini saqlaymiz
-        if (user.hasPremium) {
-          localStorage.setItem('hasPremium', 'true');
-        } else {
-          localStorage.removeItem('hasPremium');
+        // Logout function
+        function logout() {
+            // Foydalanuvchini tizimdan chiqarish
+            localStorage.removeItem('isLoggedIn'); // Tizimdan chiqish
+            window.location.href = 'login.html'; // Kirish sahifasiga qaytish
         }
-        window.location.href = 'bruhstudio.html'; // Asosiy sahifa endi index.html bo'ladi
-      } else {
-        alert('Email yoki parol noto\'g\'ri. Iltimos, qaytadan urinib ko\'ring.');
-      }
-    });
   </script>
 	</body>
 	</html>
