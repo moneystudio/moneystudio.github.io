@@ -4,10 +4,10 @@ const premiumEmailList = [
 ];
 
 const pluginData = {
-  pluginName: "ᴍɪɴᴇꜱᴛᴀx |  ",
-  pluginImage: "anarxiya.jpg",
+  pluginName: "ᴍɪɴᴇꜱᴛᴀx | ​🇧​​🇴​​🇽​​🇵​​🇻​​🇵​ ",
+  pluginImage: "boxpvp.jpg",
   pluginCategory: "ᴍɪɴᴇꜱᴛᴀx",
-  pluginInfo: "ᴍɪɴᴇꜱᴛᴀx | ᴀɴᴀʀxɪʏᴀ . Ushbu sborkada hamma funksiyalar to'liqligicha nusxalangan.",
+  pluginInfo: "ᴍɪɴᴇꜱᴛᴀx | ​🇧​​🇴​​🇽​​🇵​​🇻​​🇵​ . Ushbu sborkada hamma funksiyalar to'liqligicha nusxalangan.",
   pluginFileLink: "https://t.me/SHoXBoSSYT",
   isPremium: true,
   pluginURL: "https://youtu.be/gdwqvznof4s?si=yD8iOTXXKxFXwx6R"
